@@ -17,7 +17,11 @@ public class BaseEntity {
     @Temporal(TemporalType.TIMESTAMP)
     private LocalDateTime createdAt;
 
-    @LastModifiedDate
-    @Temporal(TemporalType.TIMESTAMP)
+    @Column
     private LocalDateTime updatedAt;
+
+    @PreUpdate
+    public void setUpdatedAt(){
+        this.updatedAt = LocalDateTime.now();
+    }
 }
